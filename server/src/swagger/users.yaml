@@ -1,0 +1,51 @@
+paths:
+  /api/v1/users/{id}:
+    get:
+      tags:
+        - Users
+      summary: Get a user by ID
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+          description: The user ID
+      responses:
+        '200':
+          description: User fetched successfully
+        '404':
+          description: User not found
+  /api/v1/users:
+    get:
+      tags:
+        - Users
+      summary: Get all users
+      responses:
+        '200':
+          description: List of users
+    put:
+      tags:
+        - Users
+      summary: Update a user
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                email:
+                  type: string
+      responses:
+        '200':
+          description: User updated
+    delete:
+      tags:
+        - Users
+      summary: Delete a user
+      responses:
+        '200':
+          description: User deleted
